@@ -7,7 +7,14 @@
     <Compile Include="Domain.fs" />
     <Compile Include="EventStore.fs" />
     <Compile Include="Projections.fs" />
+    <Compile Include="Behaviour.fs" />
     <Compile Include="Helpers.fs" />
+    <Compile Include="Tests.fs" />
     <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Expecto" Version="8.10.1" />
+    <PackageReference Include="Expecto.BenchmarkDotNet" Version="8.10.1" />
+    <PackageReference Include="Expecto.FsCheck" Version="8.10.1" />
   </ItemGroup>
 </Project>
