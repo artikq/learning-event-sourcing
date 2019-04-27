@@ -1,5 +1,6 @@
 ﻿open Domain
-open Infrastructure
+open EventStore
+open Projections
 open Helpers
 
 [<EntryPoint>]
@@ -10,5 +11,11 @@ let main _ =
   eventStore.append [ FlavourSold Vanilla ]
   eventStore.append [ FlavourSold Vanilla
                       FlavourWentOutOfStock Vanilla ]
-  eventStore.get() |> printEvents
+  eventStore.append [ FlavourSold Strawberry ]
+  eventStore.append [ FlavourSold Strawberry ]
+  let events = eventStore.get()
+  events |> printEvents
+  let sold : Map<Flavour, int> = events |> project soldFlavours
+  printSoldFlavour Vanilla sold
+  printSoldFlavour Strawberry sold
   0 // return an integer exit code
