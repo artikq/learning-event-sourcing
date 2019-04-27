@@ -13,5 +13,10 @@ let printEvents events =
 
 let printSoldFlavour flavour map =
   map
-  |> soldOfFlavour flavour
+  |> countFlavour flavour
   |> printfn "%A : %i" flavour
+
+let printProjection projection events name =
+  events
+  |> project projection
+  |> printfn "Projection %s is %A" name
